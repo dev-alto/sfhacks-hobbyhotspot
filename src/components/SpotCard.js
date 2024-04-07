@@ -1,6 +1,5 @@
 import { GrMapLocation } from "react-icons/gr";
 import { motion } from "framer-motion"
-import { useState } from "react";
 
 import Image from "next/image"
 
