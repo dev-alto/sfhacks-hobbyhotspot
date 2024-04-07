@@ -10,14 +10,14 @@ export default function MapAtLocation(props) {
             defer
             ></script>
             <iframe
-                className=""
+                className="w-screen h-screen"
                 width="600"
                 height="450"
                 // style="border:0"
                 loading="lazy"
                 allowFullScreen
                 referrerpolicy="no-referrer-when-downgrade"
-                src={`https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_CLOUD_API_KEY}&q=${props.location}`}>
+                src={`https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_CLOUD_API_KEY}&q=${props.locationQuery}`}>
             </iframe>
         </div>
         

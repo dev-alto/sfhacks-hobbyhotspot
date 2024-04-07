@@ -26,16 +26,19 @@ const JSON_RESPONSE_TEMPLATE = {
         "Name": "<spot 1 name>",
         "Location": "<spot 1 location>",
         "Description": "<spot 1 description>",
+        "Tags": "<a list of description tags describing spot 1>"
     },
     1: {
         "Name": "<spot 2 name>",
         "Location": "<spot 2 location>",
         "Description": "<spot 2 description>",
+        "Tags": "<a list of description tags describing spot 2>"
     },
     2: {
         "Name": "<spot 3 name >",
         "Location": "<spot 3 street number and name>",
         "Description": "<spot 3 description>",
+        "Tags": "<a list of description tags describing spot 3>"
     }
 }
 

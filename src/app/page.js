@@ -17,6 +17,7 @@ const imageFileNames = ["cafe.jpg", "cable_cars.png", "paintedladies.jpg", "dnd.
 export default function MainInterface() {
 
   const [spots, setSpots] = useState([])
+  const [currentSpot, setCurrentSpot] = useState(2)
   const [initialized, setInitialized] = useState(false)
 
   async function onSubmit(event) {
@@ -25,19 +26,19 @@ export default function MainInterface() {
     const formData = new FormData(event.currentTarget);
 
     try {
-      const response = await fetch('/api/submit', {
+      const response = await fetch('/api/inquiry', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({
           'hobbies': formData.get('hobbies'),
-          'interests': formData.get('interests')
+          'interests': formData.get('interests'),
+          'tags': formData.get('tags')
         }),
       });
 
       let data = await response.json();
       data = JSON.parse(data)
-      console.log(data)
-      setSpots([data["0"], data["1"], data["2"]]);
+      setSpots(Object.values(data));
       setInitialized(true)
     } 
     catch(error) {
@@ -49,10 +50,10 @@ export default function MainInterface() {
   return (
     <main className="w-screen h-screen">
       <Image width={1000} height={1080} src={heroOverlay} className="absolute w-screen h-screen opacity-10" alt="" priority/>
-      <div>
-          {/* bottom     */} <div className="bg-gradient-to-t from-black to-transparent absolute bottom-0 w-full h-[20%]"></div>
-          {/* cent-left  */} <div className="bg-gradient-to-l from-[#00000075] to-transparent absolute top-0 left-[25%] w-[25%] h-screen"></div>
-          {/* cent-right */} <div className="bg-gradient-to-r from-[#00000075] to-transparent absolute top-0 right-[25%] w-[25%] h-screen"></div>
+      <div className="w-screen h-screen absolute">
+          {/* bottom     */} <div className="bg-gradient-to-t from-black to-transparent absolute bottom-0 w-screen h-[20%]"></div>
+          {/* cent-left  */} <div className="bg-gradient-to-l from-[#00000075] to-transparent absolute top-0 left-[25%] w-[25%] h-full"></div>
+          {/* cent-right */} <div className="bg-gradient-to-r from-[#00000075] to-transparent absolute top-0 right-[25%] w-[25%] h-full"></div>
       </div>
       
       <div className="flex flex-row flex-wrap overflow-hidden">
@@ -79,14 +80,16 @@ export default function MainInterface() {
       </div>
 
       <div className="flex min-h-screen flex-col items-center justify-between p-24 gap-y-4" >
-        <Map />
+        { currentSpot ? <Map locationQuery={currentSpot.Location} /> : <></> }
         <div className="flex flex-row flex-auto justify-center gap-4">
-          {initialized ? spots.map((spotDetails, index) => {
-            console.log(spotDetails.Name, spotDetails.Description, spotDetails.Location)  
-            return (
-              <SpotCard title={spotDetails.Name} description={spotDetails.Description} location={spotDetails.Location} key={index} />
-            )
-          }) : <p className="text-white">Waiting...</p>}
+          { 
+            initialized ? spots.map((spotDetails, index) => {
+              console.log(spotDetails.Name, spotDetails.Description, spotDetails.Location)  
+              return (
+                <SpotCard onMouseEnter={() => setCurrentSpot(index)} title={spotDetails.Name} description={spotDetails.Description} location={spotDetails.Location} tags={spotDetails.Tags} key={index} index={index}  />
+              )
+            }) : <p className="text-white">Waiting...</p>
+          }
         </div>
       </div>
       

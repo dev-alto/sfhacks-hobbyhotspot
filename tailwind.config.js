@@ -17,7 +17,7 @@ module.exports = {
         }
       },
       colors: {
-        'primyellow':'#F5C468',
+        'primyellow':'#facb5f ',
         'darkblue': '#5095A4',
         'primorange': '#b85e4a',
         'primred': '#A73F5E',
