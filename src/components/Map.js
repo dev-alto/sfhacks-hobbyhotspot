@@ -1,8 +1,9 @@
 require('dotenv').config()
 
-export default function Map() {
+export default function MapAtLocation() {
     return (
         <iframe
+            className=""
             width="600"
             height="450"
             // style="border:0"

@@ -7,6 +7,22 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'infinite-scroll': 'infinite-scroll 5s linear infinite',
+      },
+      keyframes: {
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-300%)' },
+        }
+      },
+      colors: {
+        'primyellow':'#F5C468',
+        'darkblue': '#5095A4',
+        'lightblue': '#81DFCF',
+        'primred': '#A73F5E',
+        'ebony': '#2E303D',
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

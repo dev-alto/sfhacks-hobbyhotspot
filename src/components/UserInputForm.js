@@ -18,12 +18,14 @@ export default function UserInputForm() {
   }
 
   return (
-    <form className="flex flex-col w-full justify-center items-center gap-4" onSubmit={onSubmit}>
-      <label className="text-lg font-semibold">List your Hobbies</label> 
-      <input className="bg-yellow-100 w-[40%] h-[20vh] text-center break-words" type="text" name="Hobbys" placeholder="Basketball, Gaming" />
-      <label className="text-lg font-semibold">List your Interests</label>
-      <input className="bg-yellow-100 w-[40%] h-[20vh] text-center break-words" type="text" name="Intrest" placeholder="Movies, Music"/>
-      <button type="submit">Submit</button>
-    </form>
+    <div className="w-full"> 
+      <form className="bg-primred w-full flex flex-col justify-center items-center gap-4" onSubmit={onSubmit}>
+        <label className="text-lg text-white font-semibold">List your Hobbies</label> 
+        <input className="bg-white w-[40%] h-[20vh] text-center text-wrap" type="text" name="Hobbys" placeholder="Basketball, Gaming" />
+        <label className="text-lg text-white font-semibold">List your Interests</label>
+        <input className="bg-white w-[40%] h-[20vh] text-center text-wrap" type="text" name="Intrest" placeholder="Movies, Music"/>
+        <button className="bg-darkblue text-white" type="submit">Submit</button>
+      </form>
+    </div>
     )
   }

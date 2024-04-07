@@ -11,14 +11,15 @@ export async function POST(request) {
 
     console.log(parsedRequest);
 
-    if (!parsedRequest) {
-        return new NextResponse(
-            JSON.stringify({ name: "Please provide hobbies to search for" }),
-            { status: 400 }
-        );
-    }
+    // if (!parsedRequest) {
+    //     return new NextResponse(
+    //         JSON.stringify({ name: "Please provide hobbies to search for" }),
+    //         { status: 400 }
+    //     );
+    // }
 
-    return new NextResponse({ answer: "Hello!" }, {
+    return new NextResponse(
+        JSON.stringify({ answer: "Hello!" }), {
         status: 200,
     });
 }
